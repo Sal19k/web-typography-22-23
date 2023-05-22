@@ -11,18 +11,66 @@ Feel free to adjust the defaults to your needs.
 	position: absolute;
 }
 #closed-captions .on {
-	opacity: 1;
+	opacity: 1;	
 }
 #closed-captions .off {
 	transition: .2s;
 	opacity: 0;
 }
-.voice1 {
-	font-style: italic;
+.voice1, .voice4 {
+	position: absolute;
+	font-family: "Brenner Sans"; 
+	font-style:italic; 
+	font-size: 2em;
+	font-weight: 400;
+	color: black;
+	background-color: white;
+	padding-left: .2em; padding-right: .2em;
+	left: 50%;
+	translate: -50%;
+	text-align: center;
+
 }
+
+.voice3 {
+	position: absolute;
+	font-family: "Brenner Sans";  
+	font-style: Italic;
+	font-weight: 800;
+	font-size: 2em;
+	color: red;
+	left: 50%;
+	translate: -50%;
+	text-align: center;
+}
+
+
 .voice2 {
-	font-weight: bold;
+	position: absolute;
+	font-family: "Brenner Mono"; 
+	font-style: Normal; 
+	font-size: 2em;
+	font-weight: 400;
+	color: black;
+	left: 50%;
+	translate: -50%;
+	text-align: center;
 }
+
+.voice5 {
+	position: absolute;
+	font-family: "Brenner Mono"; 
+	font-style: Normal; 
+	font-size: 2em;
+	font-weight: 400;
+	color: black;
+	left: 50%;
+	translate: -50%;
+	text-align: center;
+}
+
+
+
 
 /* **********************************************
 The first paragraph, with extended timing for 
@@ -32,7 +80,7 @@ The first paragraph, with extended timing for
 	spoken.
 You probably want to change the styling.
 ********************************************** */
-.p0 span {
+/* .p0 span {
 	opacity: 0;
 	font-family: brenner;
 }
@@ -99,9 +147,8 @@ You probably want to change the styling.
 }
 
 .p1.on {
-	background: hotpink;
-	color: red;
-}
+	color: white;
+} */
 
 /* **********************************************
 Sounds.
@@ -112,13 +159,36 @@ Sounds.
 
 /* The moment the class .sound1 is added to the body, the background is yellow */
 .sound1 {
-	background: hotpink;
+	
+	background: blue;
 }
 
 /* The moment the class .sound1 is added to the body, the movie makes a turn */
-.sound1 #video-mask {
-	box-shadow: 2em 2em 2em olivedrab;
+.sound2 #video-container {
+	animation-name: politie;
+	animation-duration: 1.5s;
 }
+
+@keyframes politie {
+	0%   {
+		filter: drop-shadow(0px 0px 0px #4444dd)}
+	50% {
+		filter: drop-shadow(0px 0px 85px #ff0000)}
+	100%   {
+		filter: drop-shadow(0px 0px 0px #4444dd)}
+}
+
+.sound7 .iframe {
+	animation-name: example;
+	animation-duration: 2s;
+}
+
+@keyframes example {
+	0%   {
+		width: 80em;}
+	100% {
+		width: 20;}
+  }
 
 
 /* **********************************************
@@ -131,6 +201,7 @@ body {
 	height: 100vh;
 	margin: 0;
 	justify-content: center;
+	background-image: url(../images/video.mp4);
 }
 #video-container {
 	margin: auto;
@@ -144,7 +215,27 @@ body {
 }
 
 iframe {
-	width: 80vw;
+	width: 57vw;
 	height: 53.33333333vw;
 	margin-top: -0.35vw;
+}
+
+
+.video-background {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+	z-index: -1;
+}
+
+.video-background video {
+    position: absolute;
+	width: 100%;
+    z-index: -100;
+}
+
+.content {
+    position: relative;
+    z-index: -1;
 }

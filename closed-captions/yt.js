@@ -1,4 +1,6 @@
 var player;
+var backgroundPlayer = document.querySelector('#video');
+
 
 function onYouTubeIframeAPIReady() {
 	player = new YT.Player('video-placeholder', {
@@ -78,16 +80,25 @@ function pTimes(num,startT,endT,curT) {
 	}
 }
 
-function sTimes(num,soundStarts,curT) {
-	var soundClass = 'sound' + num;
-	var b = document.querySelector('body');
-	if( curT > soundStarts && !b.classList.contains(soundClass)) {
-		b.classList.add(soundClass);
-	}
-	if( curT < soundStarts && b.classList.contains(soundClass)) {
-		b.classList.remove(soundClass);
-	}
+function sTimes(num, soundStarts, curT) {
+    var soundClass = 'sound' + num;
+    var b = document.querySelector('body');
+    if (curT > soundStarts && !b.classList.contains(soundClass)) {
+        b.classList.add(soundClass);
+        // If this is sound0, play the background video
+        if (num === 0) {
+            document.querySelector('.video-background video').play();
+        }
+    }
+    if (curT < soundStarts && b.classList.contains(soundClass)) {
+        b.classList.remove(soundClass);
+        // If this is sound0, pause the background video
+        if (num === 0) {
+            document.querySelector('.video-background video').pause();
+        }
+    }
 }
+
 
 (function() {
 	/**
@@ -136,4 +147,3 @@ function sTimes(num,soundStarts,curT) {
 		};
 	}
 })();
-
